@@ -70,6 +70,14 @@ Weights and impacts are provided separately:
 * **Impacts:** `+,-,+`
 
 ---
+## Example
+Input 
+<img width="283" height="168" alt="image" src="https://github.com/user-attachments/assets/863ef29a-dc1b-4312-86d1-7740aca56377" />
+
+output
+<img width="963" height="395" alt="image" src="https://github.com/user-attachments/assets/8ed5a4b7-3763-4e1e-9fe2-085b6d9c281e" />
+
+
 
 ## Command Line Usage
 

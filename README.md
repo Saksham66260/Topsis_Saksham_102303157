@@ -1,87 +1,66 @@
-# Topsis-Saksham-102303157
-
-A Python package implementing TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution), a multi-criteria decision analysis method.
-
-## Description
-
-TOPSIS is a method of compensatory aggregation that compares a set of alternatives by identifying weights for each criterion, normalizing scores for each criterion, and calculating the geometric distance between each alternative and the ideal alternative.
-
-## Installation
-
-```bash
-pip install Topsis-Saksham-102303157
-```
-
-## Usage
-
-### Command Line
-
-After installation, you can use the `topsis` command directly from the terminal:
-
-```bash
-topsis <InputDataFile> <Weights> <Impacts> <OutputResultFileName>
-```
-
-### Example
-
-```bash
-topsis data.csv "1,1,1,2" "+,+,-,+" output.csv
-```
-
-### Parameters
-
-- **InputDataFile**: Path to the input CSV file
-- **Weights**: Comma-separated weights for each criterion (e.g., "1,1,1,2")
-- **Impacts**: Comma-separated impacts (+ or -) for each criterion (e.g., "+,+,-,+")
-- **OutputResultFileName**: Path for the output CSV file
-
-### Input File Format
-
+TOPSIS Implementation in Python
+Author: Saksham
+Roll No: 102303157
+This project is a Python implementation of the TOPSIS (Technique for Order Preference by Similarity to Ideal Solution) method used in multi-criteria decision making. It provides both a command-line tool and a simple web service to rank alternatives based on multiple criteria, weights, and impacts.
+What is TOPSIS?
+TOPSIS is a decision-making technique that ranks alternatives by comparing their distance from an ideal best solution and an ideal worst solution.
+The alternative closest to the ideal best and farthest from the ideal worst is ranked highest.
+It is commonly used in areas like product selection, performance evaluation, and decision analysis where multiple criteria are involved.
+How the Method Works (Brief)
+Read the decision matrix from a CSV file
+Normalize the data so different criteria become comparable
+Apply weights to each criterion
+Determine the positive and negative ideal solutions based on impacts
+Calculate Euclidean distance from both ideal solutions
+Compute the TOPSIS score
+Rank alternatives based on the score
+Project Structure
+Topsis_Saksham_102303157/
+├── topsis_saksham_102303157/   # Core TOPSIS logic (Python package)
+├── topsis-web-service/         # Flask-based web service
+│   └── app.py
+├── data.csv                    # Sample input file
+├── output-result.csv           # Sample output
+├── setup.py
+├── requirements.txt
+└── README.md
+Input Format
 The input CSV file should have:
-- First column: Names/identifiers of alternatives
-- Remaining columns: Numeric values for each criterion
-
-Example (data.csv):
-```csv
-Fund Name,P1,P2,P3,P4,P5
-M1,0.67,0.45,6.5,42.6,12.56
-M2,0.6,0.36,3.6,53.3,14.47
-M3,0.82,0.67,3.8,63.1,17.1
-```
-
-### Output
-
-The program generates a CSV file with two additional columns:
-- **Topsis Score**: The calculated TOPSIS score for each alternative
-- **Rank**: Ranking based on TOPSIS score (1 = best)
-
-## Features
-
-- Input validation (file existence, column count, numeric values)
-- Proper error handling with descriptive messages
-- Vector normalization method
-- Weighted normalized decision matrix
-- Euclidean distance calculation
-- TOPSIS score and ranking
-
-## Requirements
-
-- Python 3.6+
-- pandas >= 1.0.0
-- numpy >= 1.18.0
-
-## License
-
-MIT License
-
-## Author
-
-Saksham (Roll Number: 102303157)
-
-## Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-## Support
-
-For support, email your.email@example.com
+First column: alternative names
+Remaining columns: numeric criteria values
+Example:
+Model	Price	Performance	Weight
+Weights and impacts are provided separately:
+Weights: 1,2,3
+Impacts: +,-,+
+Command Line Usage
+Install dependencies:
+pip install -r requirements.txt
+Run TOPSIS:
+topsis data.csv "1,2,3" "+,-,+"
+Optional output file:
+topsis data.csv "1,2,3" "+,-,+" result.csv
+The output file contains TOPSIS scores and ranks for each alternative.
+Web Service
+The topsis-web-service folder contains a Flask application that exposes TOPSIS through an API.
+Users can upload a CSV file along with weights and impacts and receive ranked results.
+This is useful for integrating TOPSIS into web or backend systems.
+Output
+The final output includes:
+Original data
+Calculated TOPSIS score
+Rank of each alternative
+Higher score indicates a better alternative.
+Validation
+The implementation checks for:
+Correct number of weights and impacts
+Numeric criteria values
+Valid impact symbols (+ or -)
+Proper CSV format
+Dependencies
+Python 3.x
+pandas
+numpy
+flask (for web service)
+Conclusion
+This project provides a simple and practical implementation of the TOPSIS method with both CLI and web-based access. It is designed to be easy to use, readable, and suitable for real decision-making scenarios.
